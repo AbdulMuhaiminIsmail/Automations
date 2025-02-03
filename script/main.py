@@ -7,12 +7,12 @@ from selenium.webdriver.chrome.service import Service
 import undetected_chromedriver as uc
 
 from google_sheets import update_sheet
-from script.helpers import random_delay, random_scroll, append_dashes_to_file, append_to_file
+from helpers import random_delay, random_scroll, append_dashes_to_file, append_to_file
 
 import random
 import time
 
-RESULTS_FILE_PATH = "D:\SEO Automations\script\results.txt"
+RESULTS_FILE_PATH = r"D:\SEO Automations\script\results.txt"
 
 # Function to check rank of a website wrt array of keywords
 def check_ranking(keywords, target_url):
@@ -43,7 +43,7 @@ def check_ranking(keywords, target_url):
     rankings = []
 
     append_dashes_to_file(RESULTS_FILE_PATH)
-    append_to_file("                                                Link: " + target_url + "\n")
+    append_to_file(RESULTS_FILE_PATH, "                                                Link: " + target_url + "\n")
 
     for keyword in keywords:
         try:
@@ -61,32 +61,29 @@ def check_ranking(keywords, target_url):
             except TimeoutException:
                 print("Error: Search results did not load in time.")
 
+            # Stealth measures to avoid detection
             random_delay(1, 2)
             random_scroll(driver, scroll_times=5)
             
-            # Get all search result links
-            links = []
-
+            # Fetch all search results
             results = driver.find_elements(By.CLASS_NAME, "g")
-     
+
+            # Stealth measures to avoid detection
+            random_scroll(driver, scroll_times=2)
+            random_delay(1, 3)
+
+            # Extracting links and matching with target_url
+            rank = 0
             for result in results:
                 try:
                     link = result.find_element(By.TAG_NAME, "a").get_attribute("href")
-                    links.append(link)
+                    rank += 1
+                    if target_url in link:
+                        append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
+                        break
                 except NoSuchElementException:
                     continue
 
-            random_delay(1, 3)
-            random_scroll(driver, scroll_times=2)
-
-            # Search for ranking in top 100 results
-            rank = 0
-            for link in links:
-                rank += 1
-                if target_url in link:
-                    append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
-                    break
-            
             # Handle the case when target_url is not found in top 100 results
             if (rank > 100):
                 append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")

@@ -6,7 +6,6 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.service import Service
 import time
 import random
-from random import shuffle
 
 # Function to add random delays
 def random_delay(min_seconds=1, max_seconds=3):

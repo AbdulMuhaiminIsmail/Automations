@@ -35,7 +35,3 @@ def update_sheet(sheet_name, rankings_1d, start_col):
         print("Sheet updated successfully!")
     except Exception as e:
         print(f"An error occurred while updating sheet: {e}")
-
-
-rankings = [2, 3, 5, 0, 0, 5, -1, 7]
-update_sheet("Automated Ranking", rankings, "E2")
