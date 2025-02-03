@@ -12,7 +12,7 @@ from script.helpers import random_delay, random_scroll, append_dashes_to_file, a
 import random
 import time
 
-RESULTS_FILE_PATH = "results.txt"
+RESULTS_FILE_PATH = "D:\SEO Automations\script\results.txt"
 
 # Function to check rank of a website wrt array of keywords
 def check_ranking(keywords, target_url):
