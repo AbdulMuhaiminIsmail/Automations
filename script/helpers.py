@@ -15,3 +15,13 @@ def random_scroll(driver, min_scroll=100, max_scroll=400, scroll_times=10, min_w
         
         wait_time = random.uniform(min_wait, max_wait)  # Random wait time
         time.sleep(wait_time)
+
+def append_to_file(file_path, text):
+    with open(file_path, "a") as f:
+        f.write(text)
+    f.close()
+
+def append_dashes_to_file(file_path):
+    with open(file_path, "a") as f:
+        f.write("----------------------------------------------------------------------------------------------------------------------------------------------\n")
+    f.close()

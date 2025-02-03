@@ -7,10 +7,12 @@ from selenium.webdriver.chrome.service import Service
 import undetected_chromedriver as uc
 
 from google_sheets import update_sheet
-from random_helpers import random_delay, random_scroll
+from script.helpers import random_delay, random_scroll, append_dashes_to_file, append_to_file
 
 import random
 import time
+
+RESULTS_FILE_PATH = "results.txt"
 
 # Function to check rank of a website wrt array of keywords
 def check_ranking(keywords, target_url):
@@ -25,7 +27,7 @@ def check_ranking(keywords, target_url):
     chrome_options.add_argument("--disable-popup-blocking")  # Disable popups
     chrome_options.add_argument("--disable-notifications")  # Disable notifications
     chrome_options.add_argument("--disable-blink-features=AutomationControlled") # Disable automation control
-    chrome_options.add_argument(r"--user-data-dir=C:\Users\ZEUS\AppData\Local\Google\Chrome\User Data\Default") # Set user data directory
+    chrome_options.add_argument(r"--user-data-dir=C:\Users\hp\AppData\Local\Google\Chrome\User Data\Default") # Set user data directory
 
     # Rotate user agents to avoid detection
     user_agents = [
@@ -40,10 +42,8 @@ def check_ranking(keywords, target_url):
 
     rankings = []
 
-    with open("results.txt", "a") as f:
-        f.write("----------------------------------------------------------------------------------------------------------------------------------------------\n")
-        f.write("                                                Link: " + target_url + "\n")
-    f.close()
+    append_dashes_to_file(RESULTS_FILE_PATH)
+    append_to_file("                                                Link: " + target_url + "\n")
 
     for keyword in keywords:
         try:
@@ -80,33 +80,28 @@ def check_ranking(keywords, target_url):
             random_scroll(driver, scroll_times=2)
 
             # Search for ranking in top 100 results
-            rank = 1
+            rank = 0
             for link in links:
-                if target_url in link:
-                    with open("results.txt", "a") as f:
-                        f.write("                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
-                    f.close()
-                    break
                 rank += 1
+                if target_url in link:
+                    append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
+                    break
             
             # Handle the case when target_url is not found in top 100 results
             if (rank > 100):
-                with open("results.txt", "a") as f:
-                    f.write("                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
-                f.close()
+                append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#" + str(rank) + ")\n")
         
         except Exception as e:
             print(f"An error occurred: {e}")
-            rank = -1
+            rank = 0
+            append_to_file(RESULTS_FILE_PATH, "                                                    - Keyword: " + keyword + " (#Error) \n")
 
         finally:
             rankings.append(rank)
             random_delay(3, 5)
             continue
     
-    with open("results.txt", "a") as f:
-        f.write("----------------------------------------------------------------------------------------------------------------------------------------------\n")
-    f.close()
+    append_dashes_to_file(RESULTS_FILE_PATH)
     print("Results saved in results.txt file.")
 
     driver.quit()
@@ -145,7 +140,7 @@ def main():
     # End timer
     end_time = time.time()
 
-    print(f"Rankings checked and updated in Google Sheet in {end_time - start_time:.2f} seconds.")
+    print(f"Rankings checked and updated in Google Sheet in {(end_time - start_time) / 60} minutes")
 
 if __name__ == "__main__":
     main()
