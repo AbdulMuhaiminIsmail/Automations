@@ -13,9 +13,9 @@ from Helpers.extract_text import extract_text_from_pdf
 from Helpers.job_description import seo_job_description
 
 # Define directories
-input_folder = "../SEO/SEO Resumes"
-shortlisted_folder = "../SEO/SEO Shortlisted"
-rejected_folder = "../SEO/SEO Rejected"
+input_folder = "../Departments/SEO/SEO Resumes"
+shortlisted_folder = "../Departments/SEO/SEO Shortlisted"
+rejected_folder = "../Departments/SEO/SEO Rejected"
 os.makedirs(shortlisted_folder, exist_ok=True)
 os.makedirs(rejected_folder, exist_ok=True)
 

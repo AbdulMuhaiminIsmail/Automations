@@ -34,5 +34,8 @@ Thumbs.db
 *.old
 
 # Ignore uploaded resumes
-Departments/SEO/SEO Resumes/*
-Departments/SEO/UIUX Resumes/*
+"Departments/SEO/SEO Resumes/"*
+"Departments/SEO/UIUX Resumes/"*
+
+# PDFs
+*.pdf

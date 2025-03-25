@@ -13,9 +13,9 @@ from Helpers.extract_text import extract_text_from_pdf
 from Helpers.job_description import uiux_job_description
 
 # Define directories
-input_folder = "../UIUX/UIUX Resumes"
-shortlisted_folder = "../UIUX/UIUX Shortlisted"
-rejected_folder = "../UIUX/UIUX Rejected"
+input_folder = "../Departments/UIUX/UIUX Resumes"
+shortlisted_folder = "../Departments/UIUX/UIUX Shortlisted"
+rejected_folder = "../Departments/UIUX/UIUX Rejected"
 os.makedirs(shortlisted_folder, exist_ok=True)
 os.makedirs(rejected_folder, exist_ok=True)
 
