@@ -37,5 +37,8 @@ Thumbs.db
 "Departments/SEO/SEO Resumes/"*
 "Departments/SEO/UIUX Resumes/"*
 
-# PDFs
+# PDFs, CSVs and Excel files
+*.csv
 *.pdf
+*.xlsx
+*.xls

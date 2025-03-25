@@ -1,6 +1,11 @@
 # Handling unicode encoding issues in Windows
+import os
 import sys 
 sys.stdout.reconfigure(encoding='utf-8')
+
+# Get the parent directory (go up one level)
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(parent_dir)
 
 # Importing required libraries
 import os
@@ -13,9 +18,9 @@ from Helpers.extract_text import extract_text_from_pdf
 from Helpers.job_description import seo_job_description
 
 # Define directories
-input_folder = "../Departments/SEO/SEO Resumes"
-shortlisted_folder = "../Departments/SEO/SEO Shortlisted"
-rejected_folder = "../Departments/SEO/SEO Rejected"
+input_folder = "Departments/SEO/SEO Resumes"
+shortlisted_folder = "Departments/SEO/SEO Shortlisted"
+rejected_folder = "Departments/SEO/SEO Rejected"
 os.makedirs(shortlisted_folder, exist_ok=True)
 os.makedirs(rejected_folder, exist_ok=True)
 
