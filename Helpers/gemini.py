@@ -10,7 +10,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 # Function to generate AI response
 def generate_response(prompt):
     model = genai.GenerativeModel(  
-        model_name="gemini-2.0-flash",  
+        model_name = "gemini-2.5-pro-exp-03-25",
         generation_config={
             "temperature": 1,
             "top_p": 0.95,

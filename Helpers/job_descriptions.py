@@ -1,4 +1,5 @@
-seo_job_description = """
+# SEO Executive Job Description
+seo_executive_job_description = """
 SEO Executive | Required Experience: 3+ Years
 
 We are an e-commerce company targeting USA & Canada, seeking an SEO Executive to enhance online visibility, drive organic traffic, and improve search engine rankings.
@@ -19,9 +20,9 @@ Qualifications:
 - Experience with HTML, CSS, and website optimization.
 - Strong analytical skills and ability to interpret data for SEO strategy.
 """
-##############################################################################
 
-uiux_job_description = """
+# UI/UX Designer Job Description
+uiux_designer_job_description = """
 UI/UX Designer | Required Experience: 3+ Years
 
 We are looking for a creative and experienced UI/UX Designer to design and maintain websites while creating impactful visuals for marketing channels. The role requires a blend of creativity, technical expertise, and user-centered design.
