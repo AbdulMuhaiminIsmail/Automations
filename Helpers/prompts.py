@@ -1,5 +1,5 @@
-# SEO Prompt
-seo_prompt = """
+# SEO Executive Prompt
+seo_executive_prompt = """
     You are an expert in resume screening and hiring. Your task is to analyze a candidate's resume against the given job description and provide a structured evaluation.
 
     Here is the job description you need to match the candidate's resume with:
@@ -49,8 +49,8 @@ seo_prompt = """
     ```
     """
 
-# UI/UX Prompt
-uiux_prompt = """
+# UI/UX Designer Prompt
+uiux_designer_prompt = """
     You are an expert in resume screening and hiring. Your task is to analyze a candidate's resume against the given UI/UX Designer job description and provide a structured evaluation.
 
     ### **Job Description:**
