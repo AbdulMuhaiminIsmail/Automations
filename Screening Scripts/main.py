@@ -15,14 +15,14 @@ import shutil
 import pandas as pd
 from Helpers.gemini import generate_response
 from Helpers.extract_text import extract_text_from_pdf
-from Helpers.prompts import seo_prompt, uiux_prompt
+from Helpers.prompts import seo_executive_prompt, uiux_designer_prompt
 from Helpers.job_descriptions import seo_executive_job_description, uiux_designer_job_description
 
 # Function to analyze resumes using Gemini
 def analyze_resume(job_role, resume_text):
     prompts = {
-        "seo": seo_prompt,
-        "uiux": uiux_prompt
+        "seo executive": seo_executive_prompt,
+        "uiux designer": uiux_designer_prompt
     }
 
     job_descriptions = {
